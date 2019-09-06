@@ -1,16 +1,3 @@
-int steps2; 
-int steps;
-int steps3;
-int in_steps;
-int steps_down;
-int steps_up;
-int tiempo=1;
-int alm=57;
-int paso=0;
-bool turnon = false; 
-String inputString = ""; 
-
-#define water_time                         // tiempo de dispensado de agua
 
 
 ////////////////////////////////////IO PINS/////////////////////
@@ -31,7 +18,7 @@ String inputString = "";
 //_______variable_______________PIN_________Descripcion___________________
 
 #define distributor              9          //distribuidor de vasos 
-#define sensor_distributor       10        // relevador interno del distribuidor de vasos
+#define sensor_distributor       10         // relevador interno del distribuidor de vasos
 
 // -------------------------valvulas ------------------------------------
 //_______variable_______________PIN_________Descripcion___________________
@@ -100,10 +87,10 @@ String inputString = "";
 // -------------------------LEDS-------------------------------------------
 //_______variable_______________PIN_________Descripcion___________________
 
-#define ledred                   A14        // LED ROJO
-#define ledgreen                 A15        //LED VERDE 
+#define ledred                  A14        // LED ROJO
+#define ledgreen                A15        //LED VERDE 
 
 // -------------------------LICUADORA --------------------------
 //_______variable_______________PIN_________Descripcion___________________
 
-#define mixer_a                  53        //licuadora (L1)
+#define mixer               53        //licuadora (L1)
