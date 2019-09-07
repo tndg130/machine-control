@@ -94,3 +94,9 @@
 //_______variable_______________PIN_________Descripcion___________________
 
 #define mixer               53        //licuadora (L1)
+
+// -------------------------Variables direccion --------------------------
+//_______variable_______________opcion_________Descripcion___________________
+
+#define direccion_motor_vert      0            //cambiar de 0 a 1 para cambiar la direccion 
+#define direccion_motor_horz      0            //cambiar de 0 a 1 para cambiar la direccion 

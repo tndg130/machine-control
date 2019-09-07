@@ -1,3 +1,15 @@
 void setup_pin();
-void horizontal_home();
-void vertical_home();
+void horizontal_home(int dir_front);
+void vertical_home(int dir_up);
+void measure();
+void down_m(int dir_down);
+void full_down_m(int dir_down);
+void motor_mix_station(int dir_back);
+void motor_water_station(int dir_back);
+void motor_alm_station(int dir_back, int alm);
+void motor_cup_station(int dir_back);
+void run_horizontal(int steps);
+int select_dirup();
+int select_dirdown();
+int select_dirback(); 
+int select_dirfront();
