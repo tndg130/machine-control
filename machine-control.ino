@@ -31,7 +31,9 @@ void setup() {
 void loop() {
   if (turnon == false)  // Si esta encendiendo
 {
-delay(30000);      // pausa de 30 segundos * 2
+ delay(30000);      // pausa de 30 segundos * 2                                    
+
+
 digitalWrite(break_motor,LOW);//FRENO OFF
 vertical_home(dir_up);//POSICION INICIAL VERTICAL
 digitalWrite(break_motor,HIGH);//FRENO ON
@@ -42,6 +44,7 @@ digitalWrite(ledgreen,HIGH); // ENCIENDE LED VERDE
 turnon=true;
    }
 digitalWrite(ledgreen,LOW); // ENCIENDE LED VERDE
+digitalWrite(ledred,HIGH); // ENCIENDE LED VERDE
 
   //***************************************************************** 
 if (alm !='n' && tiempo != 1){  // si recibe informacion almacenamiento y tiempo del raspberry
@@ -55,14 +58,6 @@ switch (paso) {
   //************************* caso 0*********************************
   //***************************************************************** 
 case 0:
-
-//******************************VALORES INICIALES*******************
-tiempo=1;
-alm=57;
-paso=0;
-turnon = false; 
-inputString = ""; 
-//******************************************************************
 
 Serial.print("0_SS_1\n"); //SS - State Started. 1: Successful.
 if (digitalRead(s_forgotten_cup) == HIGH)
@@ -146,8 +141,9 @@ break;
   //*****************************************************************
 case 4:
 Serial.print("4_SS_1\n"); //SS - State Started. 1: Successful.
-delay(1000);          //pausa para el agua
+delay(1000);         
 motor_alm_station(dir_back, alm);  //corrida al almacenamiento
+
 paso=5;
 Serial.print("SF_1\n");   // SF - State Finished. 1: Successful
 Serial.flush(); // limpia puerto serial
@@ -252,7 +248,7 @@ Serial.print("7_SS_1\n"); //SS - State Started. 1: Successful.
 
 delay(1000);
 motor_mix_station(dir_back);           //corrida a la licuadora
-if(digitalRead(end_career_sm)==LOW){ //si final de carrera horizontal esta activo
+if(digitalRead(end_career_sm)==HIGH){ //si final de carrera horizontal esta activo
 paso=8;
 }
 Serial.print("SF_1\n");   // SF - State Finished. 1: Successful
@@ -352,9 +348,11 @@ break;
   }
   
 digitalWrite(water_entrance,LOW); //agua al lavado ON
+digitalWrite(water_exit,LOW);  // desague del agua encendido
 full_down_m(dir_down);          //motor baja
 delay(5500);                    // tiempo de lavado
 digitalWrite(water_entrance,HIGH); //agua al lavado OFF
+
 paso=14;
 Serial.print("SF_1\n");   // SF - State Finished. 1: Successful
 Serial.flush(); // limpia puerto serial
@@ -383,7 +381,8 @@ case 15:
 Serial.print("15_SS_1\n"); //SS - State Started. 1: Successful.
 
 vertical_home(dir_up);
-digitalWrite(water_exit,LOW);  // desague del agua encendido 
+delay(8000); 
+digitalWrite(water_exit,HIGH);// desague del agua apagado  
 digitalWrite(break_motor,HIGH); // freno encendido
 paso=16;
 Serial.print("SF_1\n");   // SF - State Finished. 1: Successful
@@ -397,8 +396,7 @@ break;
 case 16:
 Serial.print("16_SS_1\n"); //SS - State Started. 1: Successful.
 
-delay(8000); 
-digitalWrite(water_exit,HIGH);// desague del agua apagado 
+
 digitalWrite(ledred,HIGH); //APAGA LED ROJO
 digitalWrite(ledgreen,LOW); //ENCIENDE LED VERDE
 
@@ -425,17 +423,20 @@ break;
   //***************************************************************** 
 
   
-void serialEvent() {
-  while (Serial.available()) {
-
-    char inChar = (char)Serial.read();
+void serialEvent() { 
  
-    if (inChar == '\n' && alm == 57) {
+
+  while (Serial.available()) {
+    
+    char inChar = (char)Serial.read();
+
+      if (inChar == '\n' && alm == 57) {                                             
       alm=inputString.toInt();
+
       inputString = "";
       return;
       }
-    if (inChar == '\n' && alm != 57) {
+      if (inChar == '\n' && alm != 57) {                                          
       tiempo= inputString.toInt();
       inputString = "";
       

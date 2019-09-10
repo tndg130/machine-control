@@ -177,8 +177,8 @@ delayMicroseconds(500);
   //***********************dispensador de agua********************** 
   //***************************************************************** 
 void motor_water_station(int dir_back)
-{   digitalWrite(s_water_distribution,HIGH);             //<------- cambiar el LOW por HIGH o viseversa si no enciende
-  while(digitalRead(end_career_sm)==LOW){
+{   digitalWrite(holdoff_msmall,HIGH);             //<------- cambiar el LOW por HIGH o viseversa si no enciende
+  while(digitalRead(s_water_distribution)==LOW){
   digitalWrite(direction_small, dir_back);
 digitalWrite(pwm_small, HIGH);
 delayMicroseconds(500);
@@ -197,8 +197,8 @@ delayMicroseconds(500);
   //***********************dispensador de vasos********************** 
   //***************************************************************** 
 void motor_cup_station(int dir_back)
-{   digitalWrite(station_cup_distribution,HIGH);             //<------- cambiar el LOW por HIGH o viseversa si no enciende
-  while(digitalRead(end_career_sm)==LOW){
+{   digitalWrite(holdoff_msmall,HIGH);             //<------- cambiar el LOW por HIGH o viseversa si no enciende
+  while(digitalRead(station_cup_distribution)==LOW){
   digitalWrite(direction_small, dir_back);
 digitalWrite(pwm_small, HIGH);
 delayMicroseconds(500);
@@ -218,10 +218,12 @@ delayMicroseconds(500);
   //***********************almacenamiento ********************** 
   //***************************************************************** 
 
-void motor_alm_station(int dir_back, int alm)
-{  if(alm == 1 || alm == 5)
-{  digitalWrite(s_satation_1,HIGH);             //<------- cambiar el LOW por HIGH o viseversa si no enciende
-  while(digitalRead(end_career_sm)==LOW){
+void motor_alm_station(int dir_back, int alm){ 
+  if(alm == 1 || alm == 5)
+{ 
+  
+  digitalWrite(holdoff_msmall,HIGH);             //<------- cambiar el LOW por HIGH o viseversa si no enciende
+  while(digitalRead(s_satation_1)==LOW){
   digitalWrite(direction_small, dir_back);
 digitalWrite(pwm_small, HIGH);
 delayMicroseconds(500);
@@ -232,8 +234,8 @@ delayMicroseconds(500);
   return;
   }
    if(alm == 2 || alm == 6)
-{  digitalWrite(s_satation_2,HIGH);             //<------- cambiar el LOW por HIGH o viseversa si no enciende
-  while(digitalRead(end_career_sm)==LOW){
+{  digitalWrite(holdoff_msmall,HIGH);             //<------- cambiar el LOW por HIGH o viseversa si no enciende
+  while(digitalRead(s_satation_2)==LOW){
   digitalWrite(direction_small, dir_back);
 digitalWrite(pwm_small, HIGH);
 delayMicroseconds(500);
@@ -244,8 +246,8 @@ delayMicroseconds(500);
   return;
   }
    if(alm == 3 || alm == 7)
-   {  digitalWrite(s_satation_3,HIGH);             //<------- cambiar el LOW por HIGH o viseversa si no enciende
-  while(digitalRead(end_career_sm)==LOW){
+   {  digitalWrite(holdoff_msmall,HIGH);             //<------- cambiar el LOW por HIGH o viseversa si no enciende
+  while(digitalRead(s_satation_3)==LOW){
   digitalWrite(direction_small, dir_back);
 digitalWrite(pwm_small, HIGH);
 delayMicroseconds(500);
@@ -255,8 +257,8 @@ delayMicroseconds(500);
   digitalWrite(holdoff_msmall,LOW);             //<------- cambiar el LOW por HIGH o viseversa si no enciende
   return;}
    if(alm == 4 || alm == 8)
-   {  digitalWrite(s_satation_4,HIGH);             //<------- cambiar el LOW por HIGH o viseversa si no enciende
-  while(digitalRead(end_career_sm)==LOW){
+   {  digitalWrite(holdoff_msmall,HIGH);             //<------- cambiar el LOW por HIGH o viseversa si no enciende
+  while(digitalRead(s_satation_4)==LOW){
   digitalWrite(direction_small, dir_back);
 digitalWrite(pwm_small, HIGH);
 delayMicroseconds(500);
@@ -266,8 +268,8 @@ delayMicroseconds(500);
   digitalWrite(holdoff_msmall,LOW);             //<------- cambiar el LOW por HIGH o viseversa si no enciende
   return;}
    if(alm == 9 || alm == 12)
-   {  digitalWrite(s_satation_5,HIGH);             //<------- cambiar el LOW por HIGH o viseversa si no enciende
-  while(digitalRead(end_career_sm)==LOW){
+   {  digitalWrite(holdoff_msmall,HIGH);             //<------- cambiar el LOW por HIGH o viseversa si no enciende
+  while(digitalRead(s_satation_5)==LOW){
   digitalWrite(direction_small, dir_back);
 digitalWrite(pwm_small, HIGH);
 delayMicroseconds(500);
@@ -277,8 +279,8 @@ delayMicroseconds(500);
   digitalWrite(holdoff_msmall,LOW);             //<------- cambiar el LOW por HIGH o viseversa si no enciende
   return;}
    if(alm == 10 || alm == 13){
-      digitalWrite(s_satation_6,HIGH);             //<------- cambiar el LOW por HIGH o viseversa si no enciende
-  while(digitalRead(end_career_sm)==LOW){
+      digitalWrite(holdoff_msmall,HIGH);             //<------- cambiar el LOW por HIGH o viseversa si no enciende
+  while(digitalRead(s_satation_6)==LOW){
   digitalWrite(direction_small, dir_back);
 digitalWrite(pwm_small, HIGH);
 delayMicroseconds(500);
@@ -288,8 +290,8 @@ delayMicroseconds(500);
   digitalWrite(holdoff_msmall,LOW);             //<------- cambiar el LOW por HIGH o viseversa si no enciende
   return;}
    if(alm == 11 || alm == 14)
-   {  digitalWrite(s_satation_7,HIGH);             //<------- cambiar el LOW por HIGH o viseversa si no enciende
-  while(digitalRead(end_career_sm)==LOW){
+   {  digitalWrite(holdoff_msmall,HIGH);             //<------- cambiar el LOW por HIGH o viseversa si no enciende
+  while(digitalRead(s_satation_7)==LOW){
   digitalWrite(direction_small, dir_back);
 digitalWrite(pwm_small, HIGH);
 delayMicroseconds(500);
